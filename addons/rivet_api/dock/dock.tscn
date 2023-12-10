@@ -34,36 +34,36 @@ stretch_mode = 4
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Links" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/Links"]
 layout_mode = 2
 text = "Hub"
 
-[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="DocsLink" type="LinkButton" parent="VBoxContainer/Links"]
 layout_mode = 2
 text = "Docs"
 
-[node name="LinkButton3" type="LinkButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="DiscordLink" type="LinkButton" parent="VBoxContainer/Links"]
 layout_mode = 2
 text = "Discord"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="SignInButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Sign in to Rivet"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="APIEndpointLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "API endpoint"
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer3"]
+[node name="APIEndpointTextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "https://api.rivet.gg"
@@ -73,3 +73,5 @@ scroll_fit_content_height = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Please manually install CLI [here]"
+
+[connection signal="pressed" from="VBoxContainer/SignInButton" to="VBoxContainer" method="_on_sign_in_button_pressed"]

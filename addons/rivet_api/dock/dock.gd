@@ -92,3 +92,32 @@ func _on_copy_command_pressed():
 #	deploy_pid = run_rivet_command(["deploy", "--namespace", "prod"])
 #	_poll_server_status()
 
+
+
+func _on_button_pressed():
+	pass # Replace with function body.
+
+
+func _on_sign_in_button_pressed():
+	# check_local_cli()
+	# OS.execute("/Users/forest/.cargo/bin/rivet-cli", ["--version"], output, true, true)
+	var api_endpoint: String = $HBoxContainer3/APIEndpointTextEdit.text
+	print("button_pressed")
+	thread.start(run_process_thread.bind())
+	
+var thread = Thread.new()
+	
+func run_process_thread():
+	print("starting thread")
+	var output = []
+	var api_endpoint: String = "https://api.staging2.gameinc.io"
+	# var api_endpoint: String = $HBoxContainer3/APIEndpointTextEdit.text
+	var process = OS.execute("/Users/forest/.cargo/bin/rivet-cli", ["--api-endpoint", api_endpoint, "sidekick", "sign-in"], output, true, true)
+	# This will block the thread until the process is done
+	# output = process.get_stdout(1)
+	print(output)
+	# Call the function on the main thread when done
+	call_deferred("on_process_done")
+
+func on_process_done():
+	print("Process done, output: ")
