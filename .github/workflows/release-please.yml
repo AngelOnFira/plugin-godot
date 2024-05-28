@@ -23,6 +23,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: simple
+          config-file: release-please-config.json
 
   # We need to include this action here instead of in another workflow since
   # workflows aren't triggered by other workflows.
